@@ -20,6 +20,11 @@ public abstract class Operaciones {
     public static Statement stmt = null;
     public static ResultSet rs = null;
 
+    public static Connection setConexion(Connection conexion) {
+        Operaciones.conexion = conexion;
+        return conexion;
+    }
+
     public static Connection getConexion() {
         return conexion;
     }

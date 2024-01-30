@@ -9,9 +9,19 @@ package com.mycompany.aldea.modelo;
  * @author user
  */
 public enum RangoMision {
-    diez,veinte,treinta,cuarenta,cincuenta, sesenta;
+    diez("10", "diez"),
+    veinte("20", "veinte"),
+    treinta("30", "treinta"),
+    cuarenta("40", "cuarenta"),
+    cincuenta("50", "cincuenta"),
+    sesenta("60", "sesenta");
+    
+    private String nombre;
+    private String numero;
 
-    static RangoMision valueOf(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private RangoMision(String nombre, String numero) {
+        this.nombre = nombre;
+        this.numero = numero;
     }
+    
 }

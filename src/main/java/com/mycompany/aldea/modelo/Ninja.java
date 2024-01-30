@@ -15,7 +15,7 @@ public class Ninja {
     //attributes
     private Long ninjaID;
     private String nombre;
-    private RangoNinja rango;
+    private String rango;
     private String aldea;
     private List<Mision> misiones;
     
@@ -25,12 +25,12 @@ public class Ninja {
     }
 
     //constructor method
-    public Ninja(Long ninjaID, String nombre, RangoNinja rango, String aldea, List<Mision> misiones) {
+    public Ninja(Long ninjaID, String nombre, String rango, String aldea) {
         this.ninjaID = ninjaID;
         this.nombre = nombre;
         this.rango = rango;
         this.aldea = aldea;
-        this.misiones = misiones;
+        //this.misiones = misiones;
     }
 
     //getters
@@ -42,7 +42,7 @@ public class Ninja {
         return nombre;
     }
 
-    public RangoNinja getRango() {
+    public String getRango() {
         return rango;
     }
 
@@ -64,7 +64,7 @@ public class Ninja {
         this.nombre = nombre;
     }
 
-    public void setRango(RangoNinja rango) {
+    public void setRango(String rango) {
         this.rango = rango;
     }
 

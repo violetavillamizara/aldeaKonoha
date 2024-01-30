@@ -14,7 +14,7 @@ public class Mision {
     //attributes
     private Long misionID;
     private String descripcion;
-    private RangoMision rango;
+    private String rango;
     private Long recompensa;
     private List<Ninja> ninjas;
     
@@ -26,12 +26,12 @@ public class Mision {
     
     //constructor method
 
-    public Mision(Long misionID, String descripcion, RangoMision rango,Long recompensa, List<Ninja> ninjas) {
+    public Mision(Long misionID, String descripcion, String rango,Long recompensa) {
         this.misionID = misionID;
         this.descripcion = descripcion;
         this.rango = rango;
         this.recompensa = recompensa;
-        this.ninjas = ninjas;
+        //this.ninjas = ninjas;
     }
 
     //getters
@@ -43,7 +43,7 @@ public class Mision {
         return descripcion;
     }
 
-    public RangoMision getRango() {
+    public String getRango() {
         return rango;
     }
 
@@ -65,7 +65,7 @@ public class Mision {
         this.descripcion = descripcion;
     }
 
-    public void setRango(RangoMision rango) {
+    public void setRango(String rango) {
         this.rango = rango;
     }
 

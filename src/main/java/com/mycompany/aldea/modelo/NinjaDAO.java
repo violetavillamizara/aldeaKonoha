@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package com.mycompany.aldea.modelo;
+import com.mycompany.aldea.persistencia.Operaciones;
 import com.mycompany.aldea.persistencia.conexionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,7 +30,7 @@ public class NinjaDAO {
                     Ninja ninja = new Ninja();
                     ninja.setNinjaID(resultSet.getLong("id"));
                     ninja.setNombre(resultSet.getString("nombre"));
-                    ninja.setRango(RangoNinja.valueOf(resultSet.getString("rango")));
+                    ninja.setRango((resultSet.getString("rango")));
                     ninja.setAldea(resultSet.getString("aldea"));
                     ninjas.add(ninja);
                 }
@@ -53,7 +54,7 @@ public class NinjaDAO {
                     Ninja ninja = new Ninja();
                     ninja.setNinjaID(resultSet.getLong("id"));
                     ninja.setNombre(resultSet.getString("nombre"));
-                    ninja.setRango(RangoNinja.valueOf(resultSet.getString("rango")));
+                    ninja.setRango((resultSet.getString("rango")));
                     ninja.setAldea(resultSet.getString("aldea"));
                     //habilidad
                     ninjas.add(ninja);
@@ -71,9 +72,16 @@ public class NinjaDAO {
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setLong(1, ninja.getNinjaID());
                 statement.setString(2, ninja.getNombre());
-                statement.setString(3, "10");
+                statement.setString(3, ninja.getRango());
                 statement.setString(4, ninja.getAldea());
-                statement.executeUpdate();
+                
+                
+                int rows = Operaciones.insertar_actualizar_borrar(statement);
+            if (rows <= 0) {
+                System.out.println("No se pudo agregar el Ninja");
+            } else {
+                System.out.println("Ninja agregado exitosamente");
+            }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -89,8 +97,14 @@ public class NinjaDAO {
             String sql = "DELETE FROM ninja WHERE id = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setLong(1, ninjaID);
-                statement.executeUpdate();
+                int rows = Operaciones.insertar_actualizar_borrar(statement);
+            if (rows <= 0) {
+                System.out.println("No se pudo DEL el Ninja");
+            } else {
+                System.out.println("Ninja DEL exitosamente");
             }
+            }
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
